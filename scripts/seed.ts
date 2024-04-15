@@ -74,24 +74,24 @@ const main = async () => {
                 order: 2,
                 title: "Verbs",
             },
-            // {
-            //     id: 3,
-            //     unitId: 1, // Unit 1 (Learn the basics...)
-            //     order: 3,
-            //     title: "Verbs",
-            // },
-            // {
-            //     id: 4,
-            //     unitId: 1, // Unit 1 (Learn the basics...)
-            //     order: 4,
-            //     title: "Verbs",
-            // },
-            // {
-            //     id: 5,
-            //     unitId: 1, // Unit 1 (Learn the basics...)
-            //     order: 5,
-            //     title: "Verbs",
-            // },
+            {
+                id: 3,
+                unitId: 1, // Unit 1 (Learn the basics...)
+                order: 3,
+                title: "Verbs",
+            },
+            {
+                id: 4,
+                unitId: 1, // Unit 1 (Learn the basics...)
+                order: 4,
+                title: "Verbs",
+            },
+            {
+                id: 5,
+                unitId: 1, // Unit 1 (Learn the basics...)
+                order: 5,
+                title: "Verbs",
+            },
         ]);
 
         await db.insert(schema.challenges).values([
@@ -121,21 +121,21 @@ const main = async () => {
         await db.insert(schema.challengeOptions).values([
             {
                 challengeId: 1, // Which one of these is "the man"?
-                imageSrc: "/man.svg",
+                imageSrc: "/man.png",
                 correct: true,
                 text: "el hombre",
                 audioSrc: "/es_man.mp3",
             },
             {
                 challengeId: 1,
-                imageSrc: "/woman.svg",
+                imageSrc: "/woman.png",
                 correct: false,
                 text: "la mujer",
                 audioSrc: "/es_woman.mp3",
             },
             {
                 challengeId: 1,
-                imageSrc: "/robot.svg",
+                imageSrc: "/robot.png",
                 correct: false,
                 text: "el robot",
                 audioSrc: "/es_robot.mp3",
