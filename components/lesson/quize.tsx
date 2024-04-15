@@ -5,6 +5,7 @@ import { useState } from "react";
 import Header from "./header";
 import QuestionBubble from "./question-bubble";
 import Challenge from "./challenge";
+import Footer from "./footer";
 
 interface QuizeProps {
     initialPercentage: number;
@@ -24,9 +25,18 @@ const Quize = (props:QuizeProps) => {
       const uncompletedIndex = challenges.findIndex((challenge)=>!challenge.completed);
       return uncompletedIndex === -1 ? 0 : uncompletedIndex;
     });
+    const [selectedOption,setSelectedOption] = useState<number>();
+    const [status,setStatus] = useState<"none"|"correct"|"wrong">("none");
     const activeChallenge = challenges[activeIndex];
     const options = activeChallenge?.challengeOptions || [];
     const question = activeChallenge.type === "ASSIST" ? "Select the correct meaning" : activeChallenge.question;
+
+    const onSelect = (id:number) => {
+      if (status !== "none") {
+        return;
+      }
+      setSelectedOption(id);
+    }
   return (
     <>
         <Header hearts={hearts} percentage={percentage} hasActiveSubscription={!!userSubscription?.isActive} />
@@ -44,11 +54,12 @@ const Quize = (props:QuizeProps) => {
                     <QuestionBubble question={activeChallenge.question} />
                   )
                 }
-                <Challenge options={options} onSelect={()=>{}} status="none" selectOption={undefined} disabled={false} type={activeChallenge.type} />
+                <Challenge options={options} onSelect={onSelect} status={status} selectOption={selectedOption} disabled={false} type={activeChallenge.type} />
               </div>
             </div>
           </div>
         </div>
+        <Footer disabled={!selectedOption} status={status} onCheck={()=>{}} />
     </>
   )
 }
