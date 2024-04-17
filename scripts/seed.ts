@@ -211,7 +211,74 @@ const main = async () => {
             },
         ]);
 
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengeId: 4, // Which one of these is "the man"?
+                imageSrc: "/man.png",
+                correct: true,
+                text: "el hombre",
+                audioSrc: "/es_man.mp3",
+            },
+            {
+                challengeId: 4,
+                imageSrc: "/woman.png",
+                correct: false,
+                text: "la mujer",
+                audioSrc: "/es_woman.mp3",
+            },
+            {
+                challengeId: 4,
+                imageSrc: "/robot.png",
+                correct: false,
+                text: "el robot",
+                audioSrc: "/es_robot.mp3",
+            },
+        ]);
 
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengeId: 5, // "the man"?
+                correct: true,
+                text: "el hombre",
+                audioSrc: "/es_man.mp3",
+            },
+            {
+                challengeId: 5,
+                correct: false,
+                text: "la mujer",
+                audioSrc: "/es_woman.mp3",
+            },
+            {
+                challengeId: 5,
+                correct: false,
+                text: "el robot",
+                audioSrc: "/es_robot.mp3",
+            },
+        ]);
+
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengeId: 6, // Which one of these is the "the robot"?
+                imageSrc: "/man.svg",
+                correct: false,
+                text: "el hombre",
+                audioSrc: "/es_man.mp3",
+            },
+            {
+                challengeId: 6,
+                imageSrc: "/woman.svg",
+                correct: false,
+                text: "la mujer",
+                audioSrc: "/es_woman.mp3",
+            },
+            {
+                challengeId: 6,
+                imageSrc: "/robot.svg",
+                correct: true,
+                text: "el robot",
+                audioSrc: "/es_robot.mp3",
+            },
+        ]);
 
         console.log("seeding finished!🟢")
     } catch (error) {
