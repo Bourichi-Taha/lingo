@@ -7,7 +7,7 @@ interface FooterProps {
     status: "none" | "correct" | "wrong" | "completed";
     onCheck: () => void;
     disabled?: boolean;
-    lessonId?: boolean;
+    lessonId?: number;
 
 }
 
