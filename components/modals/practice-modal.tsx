@@ -33,7 +33,7 @@ const PracticeModal = () => {
             </DialogHeader>
             <DialogFooter className="mb-4">
                 <div className="flex flex-col gap-y-4 w-full">
-                    <Button variant={"primary"} className="w-full" size={"lg"} onClick={()=>{}}>
+                    <Button variant={"primary"} className="w-full" size={"lg"} onClick={()=>{close()}}>
                         I understand.
                     </Button>
                 </div>
