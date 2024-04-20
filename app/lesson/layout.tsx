@@ -1,8 +1,12 @@
+import { Metadata } from "next";
 
 interface LEssonLayoutProps {
     children: React.ReactNode;
 }
-
+export const metadata: Metadata = {
+    title: "Lingo | Quize",
+    description: "Learn and have fun.",
+  };
 const LessonLayout = (props: LEssonLayoutProps) => {
     const { children } = props;
     return (

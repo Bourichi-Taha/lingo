@@ -6,9 +6,15 @@ import StickyWrapper from '@/components/main/sticky-wrapper'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import { Separator } from '@/components/ui/separator'
 import { getTopTenUsers, getUserProgress, getUserSubscription } from '@/database/queries'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import React from 'react'
+
+export const metadata: Metadata = {
+    title: "Lingo | Leaderboard",
+    description: "Learn and have fun.",
+  };
 
 const LeaderboardPage = async () => {
     const userProgressPromise = getUserProgress();

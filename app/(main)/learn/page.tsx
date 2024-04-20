@@ -6,8 +6,14 @@ import Promo from '@/components/main/promo'
 import Quests from '@/components/main/quests'
 import StickyWrapper from '@/components/main/sticky-wrapper'
 import { getCourseProgress, getLessonPercentage, getUnits, getUserProgress, getUserSubscription } from '@/database/queries'
+import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import React from 'react'
+
+export const metadata: Metadata = {
+  title: "Lingo | Learn",
+  description: "Learn and have fun.",
+};
 
 const LearnPage =async () => {
   const userProgressPromise = getUserProgress();

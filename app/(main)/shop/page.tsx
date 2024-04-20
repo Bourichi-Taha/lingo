@@ -5,10 +5,14 @@ import Quests from '@/components/main/quests'
 import Items from '@/components/main/shop/items'
 import StickyWrapper from '@/components/main/sticky-wrapper'
 import { getUserProgress, getUserSubscription } from '@/database/queries'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import React from 'react'
-
+export const metadata: Metadata = {
+    title: "Lingo | Shop",
+    description: "Learn and have fun.",
+  };
 const ShopPage = async () => {
     const userProgressPromise = getUserProgress();
     const userSubscriptionPromise = getUserSubscription();

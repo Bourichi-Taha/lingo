@@ -1,5 +1,6 @@
 import Quize from "@/components/lesson/quize";
 import { getLesson, getUserProgress, getUserSubscription } from "@/database/queries"
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 const LessonPage =async () => {

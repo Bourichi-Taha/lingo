@@ -5,12 +5,16 @@ import StickyWrapper from '@/components/main/sticky-wrapper'
 import { Progress } from '@/components/ui/progress'
 import { getUserProgress, getUserSubscription } from '@/database/queries'
 import { QUESTS } from '@/lib/constants'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
 
-
+export const metadata: Metadata = {
+    title: "Lingo | Quests",
+    description: "Learn and have fun.",
+  };
 
 const QuestsPage = async () => {
     const userProgressPromise = getUserProgress();
