@@ -1,5 +1,5 @@
 import Quize from "@/components/lesson/quize";
-import { getLesson, getUserProgress } from "@/database/queries"
+import { getLesson, getUserProgress, getUserSubscription } from "@/database/queries"
 import { redirect } from "next/navigation";
 
 interface LessonIdPageProps {
@@ -12,7 +12,8 @@ const LessonIdPage =async (props:LessonIdPageProps) => {
     const {params} = props;
     const lessonPromise = getLesson(params.lessonId);
     const userProgressPromise = getUserProgress();
-    const [lesson,userProgress] = await Promise.all([lessonPromise,userProgressPromise]);
+    const userSubscriptionPromise = getUserSubscription();
+    const [lesson,userProgress,userSubscription] = await Promise.all([lessonPromise,userProgressPromise,userSubscriptionPromise]);
 
     if (!lesson || !userProgress) {
         redirect('/learn');
@@ -21,7 +22,7 @@ const LessonIdPage =async (props:LessonIdPageProps) => {
     const initialPercentage = (lesson.challenges.filter((challenge)=>challenge.completed).length / lesson.challenges.length) * 100;
 
   return (
-    <Quize initialPercentage={initialPercentage} initialLessonId={lesson.id} initialLessonChallenges={lesson.challenges} initialHearts={userProgress.hearts} userSubscription={undefined} />
+    <Quize initialPercentage={initialPercentage} initialLessonId={lesson.id} initialLessonChallenges={lesson.challenges} initialHearts={userProgress.hearts} userSubscription={userSubscription} />
   )
 }
 

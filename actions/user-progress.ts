@@ -1,7 +1,7 @@
 "use server";
 
 import db from "@/database/drizzle";
-import { getCourseById, getUserProgress } from "@/database/queries";
+import { getCourseById, getUserProgress, getUserSubscription } from "@/database/queries";
 import { challengeProgress, challenges, userProgress } from "@/database/schema";
 import { POINTS_TO_REFILL } from "@/lib/constants";
 import { auth, currentUser } from "@clerk/nextjs";
@@ -21,6 +21,10 @@ export const upsertUserProgress = async (courseId: number) => {
 
     if (!course) {
         throw new Error("Course not found!");
+    }
+
+    if (!course.units.length || !course.units[0].lessons.length) {
+        throw new Error("Course is empty!");
     }
 
     const existingUserProgress = await getUserProgress();
@@ -57,6 +61,7 @@ export const wrongAnswer = async (challengeId: number) => {
     }
 
     const currentUserProgress = await getUserProgress();
+    const userSubscription = await getUserSubscription();
 
     if (!currentUserProgress) {
         throw new Error("user progress not found!")
@@ -84,7 +89,11 @@ export const wrongAnswer = async (challengeId: number) => {
         return { error: "practice"};
     }
 
-    if (currentUserProgress.hearts === 0) {
+    if (userSubscription?.isActive) {
+        return { error: "subscription"};
+    }
+
+    if (currentUserProgress.hearts === 0 ) {
         return {error: "hearts"};
     }
 

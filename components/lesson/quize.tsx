@@ -1,6 +1,6 @@
 'use client';
 
-import { challengeOptions, challengeProgress, challenges } from "@/database/schema";
+import { challengeOptions, challengeProgress, challenges, userSubscription } from "@/database/schema";
 import { useState, useTransition } from "react";
 import Header from "./header";
 import QuestionBubble from "./question-bubble";
@@ -21,7 +21,7 @@ interface QuizeProps {
   initialLessonId: number;
   initialLessonChallenges: (typeof challenges.$inferSelect & { completed: boolean, challengeOptions: typeof challengeOptions.$inferSelect[] })[];
   initialHearts: number;
-  userSubscription: { isActive: boolean } | undefined;
+  userSubscription: (typeof userSubscription.$inferSelect & {isActive:boolean}) | null;
 }
 
 const Quize = (props: QuizeProps) => {
