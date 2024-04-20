@@ -34,7 +34,7 @@ const LearnPage =async () => {
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
         {units.map(unit=>(
-          <div className="mb-10">
+          <div className="mb-10" key={unit.id}>
             <Unit activeLesson={courseProgress.activeLesson}  activeLessonPercentage={percentage} description={unit.description} id={unit.id} lessons={unit.lessons} order={unit.order} title={unit.title} />
           </div>
         ))}
